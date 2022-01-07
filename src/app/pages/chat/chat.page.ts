@@ -8,6 +8,7 @@ import * as CryptoJS from 'crypto-js';
 import { finalize, tap } from 'rxjs/operators';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { PhotoService } from '../../services/photo.service';
 
 export interface imgFile {
   name: string;
@@ -41,6 +42,8 @@ export class ChatPage implements OnInit {
     public loadingCtrl: LoadingController,
     private router: Router, private afs: AngularFirestore,
     private afStorage: AngularFireStorage,
+    public photoService: PhotoService
+    
     
     ) { 
     this.isFileUploading = false;
@@ -86,8 +89,9 @@ export class ChatPage implements OnInit {
 
   sendMessage() {
 
-    this.chatService.addChatMessage(this.newMsg).then(() => {
+    this.chatService.addChatMessage(this.newMsg, this.img).then(() => {
       this.newMsg = '';
+      this.photoService.image;
       this.content.scrollToBottom();
     });
 
@@ -109,6 +113,7 @@ export class ChatPage implements OnInit {
       this.newFile='';
       this.content.scrollToBottom();
       loading.dismiss();
+      
 
   })
 }
@@ -203,5 +208,8 @@ upload(){
   });
 }
 
+addPhotoToGallery() {
+  this.photoService.addNewToGallery();
+}
 
 }

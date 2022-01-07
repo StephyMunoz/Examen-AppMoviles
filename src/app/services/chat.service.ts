@@ -66,6 +66,17 @@ export class ChatService {
     });
   }
 
+  addChatImage(msg, image) {
+    return this.afs.collection('messages').add({
+      msg,
+      image,
+      from: this.currentUser.uid,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  }
+
+
+
   getChatMessages() {
     let users = [];
 
