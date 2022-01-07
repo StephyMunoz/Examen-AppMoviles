@@ -75,7 +75,7 @@
           <ion-col size="2" class="ion-align-items-center">
             <ion-button  (click)="preimagen = true">
               <ion-icon slot="icon-only" name="attach"></ion-icon>
-              <input (change)="uploadFiles()" id="file" type="file" multiple style="width: 46px;" (click)="preimagen = true"/>
+              <input (change)="uploadFiles()" id="attachfile" type="file" multiple style="width: 46px;" (click)="preimagen = true"/>
             </ion-button>
           </ion-col>
 
@@ -86,6 +86,5 @@
       
     </ion-row>
   </ion-toolbar>
-  <img *ngIf="preimagen === true" [src]="img" id="idea-img">
 
 </ion-footer>

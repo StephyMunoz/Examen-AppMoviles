@@ -2,7 +2,7 @@ import { Message } from './../../services/chat.service';
 import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
 import { ChatService } from '../../services/chat.service';
 import { Router } from '@angular/router';
-import { IonContent, LoadingController } from '@ionic/angular';
+import { IonContent, LoadingController, AlertController} from '@ionic/angular';
 import { Observable } from 'rxjs';
 import * as CryptoJS from 'crypto-js';
 import { finalize, tap } from 'rxjs/operators';
@@ -47,6 +47,8 @@ export class ChatPage implements OnInit {
     private router: Router, private afs: AngularFirestore,
     private afStorage: AngularFireStorage,
     private zone: NgZone,
+    public alertController: AlertController
+
     
     ) { 
     this.isFileUploading = false;
@@ -148,13 +150,7 @@ async sendFile(){
 
   uploadImage(event: FileList) {
       
-    const file = event.item(0)
-
-    // Image validation
-    // if (file.type.split('/')[0] !== 'image') { 
-    //   console.log('File type is not supported!')
-    //   return;
-    // }
+    const file = event.item(0);
 
     this.isFileUploading = true;
     this.isFileUploaded = false;
@@ -200,6 +196,18 @@ async sendFile(){
     
 }
 
+async presentAlert() {
+  const alert = await this.alertController.create({
+    cssClass: 'my-custom-class',
+    header: 'Solo imagenes',
+    message: 'Solo puedes subir imágenes. Para subir archivos dirígete al ícono del clip',
+    buttons: ['OK']
+  });
+
+  await alert.present();
+}
+
+
 storeFilesFirebase(image: imgFile) {
     const fileId = this.afs.createId();
     
@@ -215,31 +223,44 @@ storeFilesFirebase(image: imgFile) {
 }
 
 upload(){
+
+  // Image validation
+    
     
   let file = (<HTMLInputElement>document.getElementById('file')).files[0];
+  if (file.type.split('/')[0] !== 'image') { 
+    console.log('File type is not supported!');
+   return this.presentAlert();
+   }
   let ref = this.afStorage.ref('upload'+this.chatService.currentUser.uid+'/'+file.name);
   this.preimagen = true;
   ref.put(file).then(res=>{
     ref.getDownloadURL().subscribe(url=>{
       this.preimagen = false
-      this.img = url
+      this.img = url;
+      
     });
+    
   }).catch(err=>{
-    console.log(err)
+    console.log(err);
     this.preimagen = false;
   });
 }
 
 uploadFiles(){
     
-  let file = (<HTMLInputElement>document.getElementById('file')).files[0];
+  let file = (<HTMLInputElement>document.getElementById('attachfile')).files[0];
   let ref = this.afStorage.ref('upload'+this.chatService.currentUser.uid+'/'+file.name);
   this.preimagen = true;
   ref.put(file).then(res=>{
     ref.getDownloadURL().subscribe(url=>{
-      this.preimagen = false
+      this.preimagen = true
       this.img = url
+      console.log('j', url)
+      this.newMsg = url;
     });
+  
+    
   }).catch(err=>{
     console.log(err)
     this.preimagen = false;
