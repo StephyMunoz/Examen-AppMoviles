@@ -20,6 +20,8 @@
     <b>{{ message.fromName }}</b><br>
     <span>{{ message.msg }}
     </span>
+    <img *ngIf="message.img !== ''" [src]="message.img" id="idea-img">
+
     <div class="time ion-text-right"><br>{{ message.createdAt?.toMillis() | date:'short' }}</div>
     
     </ion-col>
@@ -31,63 +33,59 @@
 
 <ion-footer>
   <ion-toolbar color="light">
-  
+
+
     <!-- <div>{{this.uploadImage}}</div> -->
     <ion-row class="ion-align-items-center">
-      <ion-col size="10">
+      <ion-col size="6">
         <ion-textarea autoGrow="true" class="message-input" rows="1" maxLength="500" [(ngModel)]="newMsg" >
+          <img *ngIf="preimagen === true" [src]="img" id="idea-img">
+
         </ion-textarea>
       </ion-col>
       
-      <ion-col size="2">
-        <ion-row >      
-          <ion-col size="4" class="ion-align-items-center">
-            <ion-button  fill="clear" color="primary" [disabled]="newMsg === ''"
-              class="msg-btn" (click)="sendMessage()">
+
+      <ion-col size="6">
+        <ion-row >
+
+          
+          <ion-col size="2" class="ion-align-items-center">
+            <ion-button  fill="clear" color="primary" 
+              class="msg-btn" (click)="sendImage()">
               
               <ion-icon name="send" slot="icon-only"></ion-icon>
             </ion-button>
           </ion-col>
-          <ion-col size="4" class="ion-align-items-center">
+          
+          <ion-col size="2" class="ion-align-items-center">
+            <ion-button  (click)="preimagen = true">
+              <ion-icon slot="icon-only" name="camera"></ion-icon>
+              <input (change)="upload()" id="file" type="file" multiple style="width: 46px;" (click)="preimagen = true"/>
+            </ion-button>
+          </ion-col>
+
+          <ion-col size="2" class="ion-align-items-center">
             <ion-button  fill="clear" color="primary" 
               class="msg-btn" (click)="sendLocation()">>
               
               <ion-icon name="location" slot="icon-only"></ion-icon>
             </ion-button>
           </ion-col>
-          <ion-col size="4" class="ion-align-items-center">
-            <ion-card class="ion-text-center" *ngIf="!isUploading && !isUploaded">
-            <ion-card-content>
-              <ion-button  fill="clear" color="primary" 
-              class="msg-btn">
-              
-              <ion-icon name="attach" slot="icon-only" (click)="uploadImage($event.target.files)"><input type="file" (click)="uploadImage($event.target.files)" /></ion-icon>
+
+          <ion-col size="2" class="ion-align-items-center">
+            <ion-button  (click)="preimagen = true">
+              <ion-icon slot="icon-only" name="attach"></ion-icon>
+              <input (change)="uploadFiles()" id="file" type="file" multiple style="width: 46px;" (click)="preimagen = true"/>
             </ion-button>
-              </ion-card-content>
-            </ion-card>
-            
           </ion-col>
-          <ion-card class="ion-text-center" *ngIf="!isUploading && !isUploaded">
-          
-            <ion-card-content>
-              <ion-button color="tertiary" shape="round" size="small">
-                
-                <input type="file" (change)="uploadImage($event.target.files)" />
-              </ion-button>
-      
-                
-              </ion-card-content>
-          </ion-card>
-      
-          
-          
+
         </ion-row>
         
-
         
       </ion-col>
       
-      
     </ion-row>
   </ion-toolbar>
+  <img *ngIf="preimagen === true" [src]="img" id="idea-img">
+
 </ion-footer>

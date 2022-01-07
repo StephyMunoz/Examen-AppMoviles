@@ -57,7 +57,15 @@ export class ChatService {
     return this.afAuth.signOut();
   }
 
-  addChatMessage(msg) {
+  addChatMessage(msg, img) {
+    return this.afs.collection('messages').add({
+      msg,
+      img,
+      from: this.currentUser.uid,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  }
+  addChatMessages(msg) {
     return this.afs.collection('messages').add({
       msg,
       from: this.currentUser.uid,
@@ -65,6 +73,14 @@ export class ChatService {
     });
   }
 
+  addChatImage(msg, img) {
+    return this.afs.collection('messages').add({
+      msg,
+      img,
+      from: this.currentUser.uid,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  }
   getChatMessages() {
     let users = [];
 
