@@ -31,38 +31,7 @@
 
 <ion-footer>
   <ion-toolbar color="light">
-    <ion-card class="ion-text-center" *ngIf="!isUploading && !isUploaded">
-      <ion-card-header>
-        <ion-card-title>Choose Images to Upload</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-button color="tertiary" shape="round" size="small">
-          <input type="file" (change)="uploadImage($event.target.files)" />
-        </ion-button>
-
-          
-        </ion-card-content>
-    </ion-card>
-
-    <!-- File upload progress bar -->
-    <div *ngIf="percentageVal | async as percentage">
-      Progress: {{ percentage | number }}%
-      <ion-progress-bar value="{{ percentage / 100 }}"></ion-progress-bar>
-    </div>
-
-    <div *ngIf="trackSnapshot | async as snap">
-      File size: {{ snap.totalBytes | formatFileSize }} 
-      
-      Data transfered: {{ snap.bytesTransferred | formatFileSize }}
-    </div>   
-    
-    <ion-item>
-      <ion-label position="floating">Link del archivo: </ion-label>
-      <ion-input type="text" id="name" value="{{fileUrl}}">
-        <a href="{{fileUrl}}" target="blank">{{fileUrl}}</a>
-      </ion-input>
-    </ion-item>
-
+  
     <!-- <div>{{this.uploadImage}}</div> -->
     <ion-row class="ion-align-items-center">
       <ion-col size="10">
@@ -70,22 +39,54 @@
         </ion-textarea>
       </ion-col>
       
-
       <ion-col size="2">
-        <ion-row >
-
-          
-          <ion-col size="12" class="ion-align-items-center">
+        <ion-row >      
+          <ion-col size="4" class="ion-align-items-center">
             <ion-button  fill="clear" color="primary" [disabled]="newMsg === ''"
               class="msg-btn" (click)="sendMessage()">
               
               <ion-icon name="send" slot="icon-only"></ion-icon>
             </ion-button>
           </ion-col>
+          <ion-col size="4" class="ion-align-items-center">
+            <ion-button  fill="clear" color="primary" 
+              class="msg-btn" (click)="sendLocation()">>
+              
+              <ion-icon name="location" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="4" class="ion-align-items-center">
+            <ion-card class="ion-text-center" *ngIf="!isUploading && !isUploaded">
+            <ion-card-content>
+              <ion-button  fill="clear" color="primary" 
+              class="msg-btn">
+              
+              <ion-icon name="attach" slot="icon-only" (click)="uploadImage($event.target.files)"><input type="file" (click)="uploadImage($event.target.files)" /></ion-icon>
+            </ion-button>
+              </ion-card-content>
+            </ion-card>
+            
+          </ion-col>
+          <ion-card class="ion-text-center" *ngIf="!isUploading && !isUploaded">
+          
+            <ion-card-content>
+              <ion-button color="tertiary" shape="round" size="small">
+                
+                <input type="file" (change)="uploadImage($event.target.files)" />
+              </ion-button>
+      
+                
+              </ion-card-content>
+          </ion-card>
+      
+          
+          
         </ion-row>
         
+
         
       </ion-col>
+      
       
     </ion-row>
   </ion-toolbar>
