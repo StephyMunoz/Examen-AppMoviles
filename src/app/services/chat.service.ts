@@ -57,9 +57,10 @@ export class ChatService {
     return this.afAuth.signOut();
   }
 
-  addChatMessage(msg) {
+  addChatMessage(msg, img) {
     return this.afs.collection('messages').add({
       msg,
+      img,
       from: this.currentUser.uid,
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
     });
