@@ -1,7 +1,7 @@
 # Examen 1 - Aplicaciones Moviles
 ### Mateo Borja, Stephanie Muñoz, Stiven López
 
-Esta aplicación consiste en un chat simple pero completo hecho con Ionic - Angular, a continuación se muestran sus funcionalidades
+Esta aplicación consiste en un chat simple pero completo hecho con Ionic - Angular y FireBase, a continuación se muestran sus funcionalidades
 
 ### Registro e Ingreso
 
@@ -36,3 +36,13 @@ Con el botón de cámara se puede enviar imágenes por chat, intentar enviar otr
 ![image](https://user-images.githubusercontent.com/66144847/148623887-99c5481f-c13d-406a-b937-b84c36bc4351.png)
 ![image](https://user-images.githubusercontent.com/66144847/148623900-50694da1-640c-480e-a398-c4a92e11c78c.png)
 ![image](https://user-images.githubusercontent.com/66144847/148623928-6e867141-251f-4bff-af32-32906898e268.png)
+
+Con el botón de geolocalización permite copiar al chat las coordenadas de latitud y longitud del usuario, notese que para esto se necesitará otorgar permisos al navegador o plataforma
+
+![image](https://user-images.githubusercontent.com/66144847/148624348-b9b87fb5-0dd1-4282-8ff8-239ba9f8389a.png)
+
+Si se utiliza el botón de adjuntar archivo, se podrán subir archivos al almacenamiento de FireBase, se obtendrá el Link del recurso en FireBase para que los usuarios puedan abrirlo
+
+![image](https://user-images.githubusercontent.com/66144847/148624370-88cb4465-de3d-47c3-94c0-8c1c7c73be99.png)
+![image](https://user-images.githubusercontent.com/66144847/148624515-53ad4d51-6a1d-4fc2-949a-58adc931c1d5.png)
+
