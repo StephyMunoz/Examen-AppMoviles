@@ -27,3 +27,12 @@ El Link en el correo llevará a una página para reestablecer la contraseña y s
 ![image](https://user-images.githubusercontent.com/66144847/148622809-ab445ab8-7161-4c1a-8a79-498d7c39ed2e.png)
 ![image](https://user-images.githubusercontent.com/66144847/148622923-ede17e98-75f4-48a5-b328-e4c81691d347.png)
 
+Volviendo al chat, se puede enviar un mensaje común escribiendo en el campo y presionando el botón enviar
+
+![image](https://user-images.githubusercontent.com/66144847/148623643-079fce2f-5562-4dfa-91c3-84bb73423ccd.png)
+
+Con el botón de cámara se puede enviar imágenes por chat, intentar enviar otro archivo que no sea una imagen mostrará una alerta de error
+
+![image](https://user-images.githubusercontent.com/66144847/148623887-99c5481f-c13d-406a-b937-b84c36bc4351.png)
+![image](https://user-images.githubusercontent.com/66144847/148623900-50694da1-640c-480e-a398-c4a92e11c78c.png)
+![image](https://user-images.githubusercontent.com/66144847/148623928-6e867141-251f-4bff-af32-32906898e268.png)
