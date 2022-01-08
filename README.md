@@ -50,3 +50,8 @@ Si se utiliza el botón de adjuntar archivo, se podrán subir archivos al almace
 ![image](https://user-images.githubusercontent.com/66144847/148624370-88cb4465-de3d-47c3-94c0-8c1c7c73be99.png)
 ![image](https://user-images.githubusercontent.com/66144847/148624515-53ad4d51-6a1d-4fc2-949a-58adc931c1d5.png)
 
+### Generando APK
+
+Desde Android Studio, se puede generar el APK para probrar la aplicación en dispositivos móviles o emuladores
+
+![image](https://user-images.githubusercontent.com/66144847/148624934-b75643cf-46ef-4913-8576-2bc932cc67f7.png)
